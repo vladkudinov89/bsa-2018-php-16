@@ -5,6 +5,9 @@
             <a class="item">
                 <router-link to="/users">Users</router-link>
             </a>
+            <a class="item">
+                <router-link to="/albums">Albums</router-link>
+            </a>
         </div>
 
         <div class="ui container">
