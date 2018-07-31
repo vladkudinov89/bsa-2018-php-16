@@ -1,3 +1,4 @@
+import Vue from "vue";
 let lastId = 5;
 
 const state = {

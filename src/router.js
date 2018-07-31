@@ -2,6 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import Users from "./components/Userlist/Users";
 import AddUser from "./components/User/AddUser";
+import EditUser from "./components/User/EditUser";
+import User from "./components/User/User";
 
 
 Vue.use(Router);
@@ -19,6 +21,16 @@ export default new Router({
             path: "/users/add",
             name: "add-user",
             component: AddUser
+        },
+        {
+            path: "/users/:id",
+            name: "user",
+            component: User
+        },
+        {
+            path: "/users/:id/edit",
+            name: "edit-user",
+            component: EditUser
         },
     ]
 })
