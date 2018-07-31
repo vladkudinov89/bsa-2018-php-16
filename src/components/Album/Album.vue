@@ -2,6 +2,10 @@
     <div>
         <h1 class="page-header">Album Item</h1>
         <div class="ui section divider"></div>
+        <button class='ui primary button add_user-btn' v-on:click="openAddPhoto">
+            <i class='photo icon'></i> +Add Photo
+        </button>
+        <div class="ui section divider"></div>
         <div class="ui card user_item_gallery">
             <div class="content">
                 <div class="right floated meta"><a @click="$router.push({ name: 'user', params: { id: album.userId }})"><i class="eye icon"></i></a></div>
@@ -19,20 +23,21 @@
                 </div>
             </div>
         </div>
+       <h2> Photos:</h2>
+        <div class="photos_array">
+            <template v-for="photo in photos">
+                <div :key="photo.id" >
 
-        <template v-for="photo in photos">
-            <div :key="photo.id" class="col-sm-4">
-                <div class="panel panel-default">
-                    <div class="img-wrp">
-                        <img class="preview" :src="photo.urlImg">
-                    </div>
-                    <div class="h-with-delete">
+
+                    <img class="ui top aligned medium image" :src="photo.urlImg">
+                    <div class="">
                         <h4>{{ photo.title }}</h4>
-                        <button @click="this.deletePhotoId = photo.id; deletePhoto();" class="btn btn-danger btn-sm">Delete</button>
+                        <button @click="deletePhoto(photo.id);" class="ui red button">Delete</button>
                     </div>
+
                 </div>
-            </div>
-        </template>
+            </template>
+        </div>
 
     </div>
 
@@ -64,14 +69,22 @@
                 this.$store.dispatch('albums/deleteAlbum', this.$route.params.id);
                 this.$router.push({ name: 'albums' });
             },
-            deletePhoto() {
-                this.$store.dispatch('photos/deletePhoto', this.deletePhotoId);
+            deletePhoto: function(id) {
+                this.$store.dispatch('photos/deletePhoto', id);
+            },
+            openAddPhoto(){
+                this.$router.push({ name: 'add-photo'});
             }
         }
     }
 </script>
 
 <style scoped>
+    .photos_array{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
     .user_item_gallery{
         width: 500px;
         margin: 0 auto;
