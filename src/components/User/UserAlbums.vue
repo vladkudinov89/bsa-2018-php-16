@@ -1,0 +1,38 @@
+<template>
+    <div>
+        <h1 class="page-header">{{ this.user.name }}'s albums</h1>
+        <template v-for="album in albums">
+            <AlbumItem :key="album.id" :index="album.id" :album="album"></AlbumItem>
+        </template>
+    </div>
+</template>
+
+<script>
+    import AlbumItem from './../AlbumList/AlbumItem';
+
+    export default {
+        name: "UserAlbums",
+        components: {
+            AlbumItem
+        },
+        data() {
+            return {};
+        },
+        computed: {
+            user() {
+                return this.$store.state.users.users[this.$route.params.id];
+            },
+            albums() {
+                return this.$store.getters['albums/getUserAlbums'](this.$route.params.id);
+            },
+
+            // amount() {
+            //     return this.$store.getters['albums/getUserAlbumsAmount'](this.$route.params.id);
+            // }
+        },
+    }
+</script>
+
+<style scoped>
+
+</style>
