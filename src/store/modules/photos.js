@@ -25,7 +25,7 @@ const state = {
             id: 4,
             title: "cargo-1",
             urlImg:
-                "https://rawgit.com/vlvereta/bsa-2018-php-16/01fc3b7c4f0107d641a1141c300102ee63639d93/src/assets/albums/dog-preview.jpg",
+                "http://img1.static.reweb.io/tiny/0/0/dealers.rewebmkt.com/images/20160929082456-c2429_torqshift.png",
             albumId: 1
         },
         {
@@ -70,12 +70,28 @@ const getters = {
     }
 };
 const mutations = {
+
+    ADD_PHOTO(state, photo) {
+        state.photos.push({
+            title: photo.title,
+            urlImg: photo.urlImg,
+            albumId: photo.albumId
+        });
+    },
+
     DELETE_PHOTO(state, id) {
         state.photos.splice(id, 1);
     }
 };
 const actions = {
-
+    addPhoto({ context, commit }, data) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                commit("ADD_PHOTO", data);
+                resolve();
+            }, 250);
+        });
+    },
     deletePhoto({ commit }, id) {
         return new Promise(resolve => {
             setTimeout(() => {

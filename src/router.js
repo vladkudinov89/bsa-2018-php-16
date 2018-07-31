@@ -9,6 +9,7 @@ import Albums from "./components/AlbumList/Albums";
 import Album from "./components/Album/Album";
 import AddAlbum from "./components/Album/AddAlbum";
 import EditAlbum from "./components/Album/EditAlbum";
+import AddPhoto from "./components/Album/AddPhoto";
 
 
 Vue.use(Router);
@@ -61,6 +62,11 @@ export default new Router({
             path: "/albums/:id/edit",
             name: "edit-album",
             component: EditAlbum
+        },
+        {
+            path: "/albums/:id/add",
+            name: "add-photo",
+            component: AddPhoto
         },
     ]
 })
