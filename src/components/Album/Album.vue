@@ -19,6 +19,21 @@
                 </div>
             </div>
         </div>
+
+        <template v-for="photo in photos">
+            <div :key="photo.id" class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="img-wrp">
+                        <img class="preview" :src="photo.urlImg">
+                    </div>
+                    <div class="h-with-delete">
+                        <h4>{{ photo.title }}</h4>
+                        <button @click="this.deletePhotoId = photo.id; deletePhoto();" class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
     </div>
 
 </template>
@@ -39,12 +54,18 @@
             },
             albumViewImg() {
                 return this.$store.getters['albums/getPreview'](this.$route.params.id);
+            },
+            photos() {
+                return this.$store.getters['photos/getAlbumPhotos'](this.$route.params.id);
             }
         },
         methods: {
             deleteAlbum() {
                 this.$store.dispatch('albums/deleteAlbum', this.$route.params.id);
                 this.$router.push({ name: 'albums' });
+            },
+            deletePhoto() {
+                this.$store.dispatch('photos/deletePhoto', this.deletePhotoId);
             }
         }
     }
