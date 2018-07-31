@@ -1,14 +1,15 @@
 <template>
-    <div class="ui container">
+    <div class="ui centered container">
         <h1 class="page-header">Albums List</h1>
+        <div class="ui section divider"></div>
+        <router-link :to="{ name: 'add-album' }"><button class='ui primary button add_user-btn'>
+            <i class="file image outline icon"></i> +New Album
+        </button></router-link>
+        <div class="ui section divider"></div>
         <template>
             <check-panel @clicked="onClickCheckPanel"></check-panel>
         </template>
-        <div class="row">
-            <div class="col-sm-12">
-                <router-link :to="{ name: 'add-album' }"><button class="btn btn-success add-album-btn">Create new album</button></router-link>
-            </div>
-        </div>
+
         <template v-for="(album, id) in albums">
             <album-item :key="id" :index="id" :album="album"></album-item>
         </template>

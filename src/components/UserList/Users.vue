@@ -1,12 +1,15 @@
 <template>
     <div class="ui container">
         <h1>Users List</h1>
+        <div class="ui section divider"></div>
         <template>
             <search-user @clicked="onShowUserList"></search-user>
         </template>
+        <div class="ui section divider"></div>
         <button class='ui primary button add_user-btn' v-on:click="openAddUser">
             <i class='user icon'></i> +Add User
         </button>
+        <div class="ui section divider"></div>
         <div class="ui cards">
             <template v-for="(user, id) in users">
                 <user-item :key="id" :index="id" :user="user"></user-item>
