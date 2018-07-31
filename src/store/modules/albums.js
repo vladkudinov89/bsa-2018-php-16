@@ -32,20 +32,6 @@ const getters = {
         return albums;
     },
 
-    getCheckedAmount: state => checked => {
-        if (!checked.length) return state.albums.length;
-
-        var amount = 0;
-        checked.forEach(function(item, i, arr) {
-            state.albums.forEach(function(item2, i2, arr2) {
-                if (item2.userId === item) {
-                    amount++;
-                }
-            });
-        });
-        return amount;
-    },
-
     getCheckedAlbums: state => checked => {
         if (!checked.length) return state.albums;
 

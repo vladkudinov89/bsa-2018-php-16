@@ -23,12 +23,9 @@
                 return this.$store.state.users.users[this.$route.params.id];
             },
             albums() {
+                console.log(this.$store.getters['albums/getUserAlbums'](this.$route.params.id));
                 return this.$store.getters['albums/getUserAlbums'](this.$route.params.id);
             },
-
-            // amount() {
-            //     return this.$store.getters['albums/getUserAlbumsAmount'](this.$route.params.id);
-            // }
         },
     }
 </script>
