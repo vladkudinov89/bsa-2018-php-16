@@ -1,18 +1,21 @@
 const state = {
     albums: [
         {
+            id : 0,
             title: "Passenger",
             preview:
                 "https://reono.ua/uploads/news/9/1/8234/0dcc63719b40b54918f5e3c061baed2c_display.jpeg",
             userId: 0
         },
         {
+            id : 1,
             title: "Cargo",
             preview:
                 "http://kredit-ubanka.ru/images/kredit_na_gruzovoy_avtomobil-full-2.jpg",
             userId: 1
         },
         {
+            id : 2,
             title: "Bus",
             preview:
                 "http://bus.ck.ua/images/auto/1.jpg",
