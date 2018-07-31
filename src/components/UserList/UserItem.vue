@@ -14,9 +14,10 @@
             </div>
         </div>
         <div class="extra content">
-            <div class="ui two buttons">
-                <div class="ui basic green button">Edit</div>
-                <div class="ui basic red button">Delete</div>
+            <div class="ui">
+                <router-link :to="{ name: 'user', params: { id: index }}"><button class="ui primary basic button">Profile</button></router-link>
+                <router-link :to="{ name: 'user-albums', params: { id: index }}"><button class="ui purple basic button">Albums</button></router-link>
+
             </div>
         </div>
     </div>

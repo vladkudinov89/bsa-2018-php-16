@@ -4,7 +4,7 @@
         <template>
             <search-user @clicked="onShowUserList"></search-user>
         </template>
-        <button class='ui primary button' v-on:click="openAddUser">
+        <button class='ui primary button add_user-btn' v-on:click="openAddUser">
             <i class='user icon'></i> +Add User
         </button>
         <div class="ui cards">
@@ -50,5 +50,7 @@
 </script>
 
 <style scoped>
-
+.add_user-btn{
+    margin-bottom: 20px;
+}
 </style>
