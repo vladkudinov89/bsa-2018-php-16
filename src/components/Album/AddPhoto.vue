@@ -1,26 +1,29 @@
 <template>
     <div>
-        <h1 class="page-header">Add Photo!</h1>
-        <form class="form-horizontal" @submit.prevent="addPhoto">
-            <div class="form-group">
-                <label class="control-label col-sm-2">Title:</label>
-                <div class="col-sm-10">
-                    <input v-model.trim="newPhoto.title" type="text" class="form-control" id="title" placeholder="Enter title">
+        <h1>Add Photo</h1>
+        <div class="ui section divider"></div>
+        <div class='ui basic content center aligned segment '>
+            <div class='ui centered card'>
+                <div class='content'>
+                    <div class='ui form'>
+                        <div class='field'>
+                            <label>Title</label>
+                            <input v-model="newPhoto.title" type='text' placeholder="Enter title photo">
+                        </div>
+                        <div class='field'>
+                            <label>Enter Image URL:</label>
+                            <input v-model="newPhoto.urlImg" type='text' placeholder="Enter image URL">
+                        </div>
+
+                        <div class='ui two button attached buttons'>
+                            <button class='ui basic blue button' v-on:click="addPhoto()">
+                                Add
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Image URL:</label>
-                <div class="col-sm-10">
-                    <input v-model.trim="newPhoto.urlImg" type="text" class="form-control" id="imgUrl" placeholder="Enter image URL">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="buttons">
-                    <button type="submit" class="btn btn-success">Add</button>
-                    <button @click="$router.go(-1)" type="button" class="btn btn-primary">Back</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -38,9 +41,9 @@
         },
         methods: {
             addPhoto() {
-                // if (!this.newPhoto.title || !this.newPhoto.imgUrl) {
-                //     return;
-                // }
+                if (!this.newPhoto.title) {
+                    return;
+                }
 
                 this.$store.dispatch('photos/addPhoto', this.newPhoto);
                 this.clearForm();
