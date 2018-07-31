@@ -1,3 +1,5 @@
+let lastId = 5;
+
 const state = {
     users: [
         {
@@ -39,7 +41,9 @@ const getters = {
 
 const mutations = {
     ADD_USER(state, user) {
+        lastId++;
         state.users.push({
+            id: lastId,
             name: user.name,
             email: user.email,
             avatar: user.avatar
